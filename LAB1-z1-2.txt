@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1Name
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello!");
+        }
+    }
+}
+
+//2 задание
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _2
+{
+    class Program
+    {
+        enum gradus : int
+        {
+            min = 0,
+            krit = 72,
+            max = 100,
+        }
+            static void Main(string[] args)
+        {
+            /*
+            int i = 10;
+            Console.WriteLine(i);
+            i = 100;
+            Console.WriteLine(i);
+            
+            int i; 
+            Console.WriteLine(i);   //ошибка, требуется инициализация
+            
+            const int i=10; //обязательна инициализация
+            Console.WriteLine(i);
+            //i = 100;    //ошибка, изменение константы
+            Console.WriteLine(i);
+            */
+            Console.WriteLine("минимальная температура=" + (int)gradus.min);
+            Console.WriteLine("критическая температура=" + (int)gradus.krit);
+            Console.WriteLine("максимальная температура=" + (int)gradus.max);
+        }
+
+    }
+}

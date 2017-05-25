@@ -1,0 +1,302 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ArrayTest
+{
+    class Arrs
+    {
+        static private Random rnd;
+
+        static Arrs()
+        {
+            rnd = new Random();
+        }
+
+        public static int[] CreateOneDimAr(int[] arr)
+        {
+            for (int i = 0; i >= 0 && i < arr.GetLength(0); i++)
+            {
+                arr[i] = rnd.Next(1, 100);
+            }
+            return arr;
+        }
+
+        public static int[,] CreateAr2(int[,] arr)
+        {
+            for (int i = 0; i >= 0 && i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j >= 0 && j < arr.GetLength(1); j++)
+                {
+                    arr[i, j] = rnd.Next(1, 100);
+                }
+            }
+            return arr;
+        }
+
+        public static int[][] CreateArr3(int[][] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    arr[i][j] = rnd.Next(1, 100);
+                }
+            }
+            return arr;
+        }
+
+        public static void PrintArr1(string name, int[] arr)
+        {
+            Console.WriteLine("Массив - " + name);
+            for (int i = 0; i >= 0 && i < arr.GetLength(0); i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+            Console.WriteLine("\n");
+        }
+
+        public static void PrintArr2(string name, int[,] arr)
+        {
+            Console.WriteLine("Массив - " + name);
+            for (int i = 0; i >= 0 && i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j >= 0 && j < arr.GetLength(1); j++)
+                {
+                    Console.Write(arr[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+
+        public static void PrintArr3(string name, int[][] arr)
+        {
+            Console.WriteLine("Массив - " + name);
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    Console.Write("{0,3}", arr[i][j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+
+        public static void PrintArrObj(string name, object[] A)
+        {
+            int i = 0;
+
+            foreach (int element in A)
+            {
+
+                Console.WriteLine(name + "[" + i++ + "] = " + element + " ");
+            }
+            Console.WriteLine("\n");
+        }
+
+        public static void PrintArObj(string name, object[] ar)
+        {
+            Console.WriteLine(name);
+
+            foreach (object value in ar)
+                Console.WriteLine(value + " ");
+        }
+    }
+
+    class Program
+    {
+        static int[,] MulMatr(int[,] arr1, int[,] arr2)
+        {
+            int[,] arr3;
+            if (arr1.GetLength(1) != arr2.GetLength(0)) return arr3 = new int[0, 0];
+            arr3 = new int[arr1.GetLength(0), arr2.GetLength(1)];
+            for (int i = 0; i >= 0 && i < arr1.GetLength(0); i++)
+            {
+                for (int j = 0; j >= 0 && j < arr2.GetLength(1); j++)
+                {
+                    for (int k = 0; k < arr2.GetLength(0); k++)
+                    {
+                        arr3[i, j] += arr1[i, k] * arr2[k, j];
+                    }
+                }
+            }
+            return arr3;
+        }
+
+        static void PrintAnyArr(string name, Array arr)
+        {
+            int a = arr.Rank;
+
+            switch (a)
+            {
+                case 1:
+                    {
+                        Console.WriteLine("Одномерный массив - " + name + "\n");
+                        for (int i = 0; i >= 0 && i < arr.Length; i++)
+                        {
+                            Console.Write(arr.GetValue(i) + " ");
+                        }
+                        Console.WriteLine("\n");
+                    }
+                    break;
+                case 2:
+                    {
+                        Console.WriteLine("Двумерный массив - " + name + "\n");
+                        for (int i = 0; i >= 0 && i < arr.GetLength(0); i++)
+                        {
+                            for (int j = 0; j >= 0 && j < arr.GetLength(1); j++)
+                                Console.Write(arr.GetValue(i, j) + " ");
+                            Console.WriteLine();
+                        }
+                        Console.WriteLine("\n");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+        }
+
+        static void PrintAnyArr2(string name, Array arr)
+        {
+            Console.WriteLine("Массив - " + name);
+            foreach (int i in arr)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine("\n");
+        }
+
+        static void PrintAnyArr3(Object arr)
+        {
+            Array arr1 = arr as Array;
+            if (arr1 == null)
+            {
+                Console.Write(arr1 + " ");
+                return;
+            }
+            Console.WriteLine("\nМассив OBJECT - ");
+            int a = arr1.Rank;
+
+            switch (a)
+            {
+                case 1:
+                    {
+                        Console.WriteLine("Одномерный массив - ");
+                        for (int i = 0; i >= 0 && i < arr1.Length; i++)
+                        {
+                            Console.Write(arr1.GetValue(i) + " ");
+                        }
+                        Console.WriteLine("\n");
+                    }
+                    break;
+                case 2:
+                    {
+                        Console.WriteLine("Двумерный массив - ");
+                        for (int i = 0; i >= 0 && i < arr1.GetLength(0); i++)
+                        {
+                            for (int j = 0; j >= 0 && j < arr1.GetLength(1); j++)
+                                Console.Write(arr1.GetValue(i, j) + " ");
+                            Console.WriteLine();
+                        }
+                        Console.WriteLine("\n");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Default case\n");
+                    break;
+            }
+        }
+
+
+
+
+        static void Main(string[] args)
+        {
+            int[] A = new int[5], B = new int[5], C = new int[5];
+
+            A = Arrs.CreateOneDimAr(A);
+            B = Arrs.CreateOneDimAr(B);
+
+            for (int i = 0; i >= 0 && i < C.GetLength(0); i++)
+            {
+                C[i] = A[i] + B[i];
+            }
+
+            int[] X = { 5, 5, 6, 6, 7, 7 };
+
+            int[,] W = new int[3, 3];
+
+            Arrs.CreateAr2(W);
+
+            PrintAnyArr("W", W);
+
+            PrintAnyArr2("W", W);
+            PrintAnyArr2("A", A);
+            PrintAnyArr2("B", B);
+
+            Array.Copy(A, B, 3);
+
+            PrintAnyArr2("B", B);
+
+            PrintAnyArr2("X", X);
+
+            Console.Write("Введите число: ");
+            int p = int.Parse(Console.ReadLine());
+
+            int ip = Array.IndexOf(X, p);
+
+            if (ip != -1)
+            {
+                Console.WriteLine("Индекс первого вхождения " + ip + " в массиве X");
+                Console.WriteLine("Индекс последнего вхождения " + Array.LastIndexOf(X, p) + " в массиве X\n");
+            }
+            else Console.WriteLine("NOT FOUND!\n");
+
+            PrintAnyArr2("B", B);
+
+            Array.Reverse(B);
+            PrintAnyArr2("B", B);
+
+            Array.Sort(B);
+            PrintAnyArr2("B", B);
+
+            Console.Write("Введите число: ");
+            p = Array.BinarySearch(B, int.Parse(Console.ReadLine()));
+            if (p != -1)
+            {
+                Console.WriteLine("Индекс первого вхождения вашего числа в массив B: " + p + "\n");
+            }
+            else
+            {
+                Console.WriteLine("NOT FOUND");
+            }
+
+            Console.WriteLine("Отличия GetLength() от Length");
+            PrintAnyArr("W", W);
+            Console.WriteLine("W.GetLength(0) - " + W.GetLength(0));
+            Console.WriteLine("W.Length - " + W.Length);
+
+            PrintAnyArr3(W);
+
+            int[] E = { 5, 5, 6, 6, 7, 7 };
+            //Arrs.PrintArrObj("E", E);
+
+            string[] F = { "Apple", "Pie" };
+            Arrs.PrintArrObj("F", F);
+
+            int[] intAr = { 1, 2, 3 };
+            double[] dAr = { 1.1, 2.2, 3.3 };
+            string[] strAr = { "xx", "yy", "abc" };
+
+            //Arrs.PrintArObj("Целочисленный", intAr);  - невозможно
+            //Arrs.PrintArObj("Вещественный", dAr);  - невозможно
+            Arrs.PrintArObj("Строковый", strAr);
+
+        }
+    }
+}

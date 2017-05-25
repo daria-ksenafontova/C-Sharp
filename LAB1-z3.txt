@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hello
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("C Format:{0,14:C} \t{0:C2}", 12345.678);
+            Console.WriteLine("D Format:{0,14:D} \t{0:D6}", 123);
+            Console.WriteLine("E Format:{0,14:E} \t{0:E8}", 12345.6789);
+            Console.WriteLine("G Format:{0,14:G} \t{0:G10}", 12345.6789);
+            Console.WriteLine("N Format:{0,14:N} \t \a{0:N4}", 12345.6789);
+            Console.WriteLine("X Format:{0,14:X} ", 1234);
+            Console.WriteLine("P Format:{0,14:P} ", 0.9);
+        }
+
+    }
+}
